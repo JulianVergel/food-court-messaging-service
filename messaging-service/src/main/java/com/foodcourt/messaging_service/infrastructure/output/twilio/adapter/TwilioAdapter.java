@@ -22,7 +22,5 @@ public class TwilioAdapter implements ISmsClientPort {
                 new com.twilio.type.PhoneNumber(twilioConfiguration.getTrialNumber()),
                 message
         ).create();
-
-        System.out.println("SMS enviado al telefono: " + phone);
     }
 }
