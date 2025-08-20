@@ -14,16 +14,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.foodcourt.messaging_service.infrastructure.input.doc.SwaggerConstants.*;
+
 @RestController
 @RequestMapping("/api/v1/notification")
 @RequiredArgsConstructor
 public class SmsController {
     private final ISmsHandler smsHandler;
 
-    @Operation(summary = "Enviar un SMS notification")
+    @Operation(summary = SUMMARY_SEND_SMS)
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "204", description = "SMS enviado correctamente", content = @Content),
-            @ApiResponse(responseCode = "400", description = "Fallo, revisa los parametros", content = @Content)
+            @ApiResponse(responseCode = "204", description = RESPONSE_204_DESCRIPTION, content = @Content),
+            @ApiResponse(responseCode = "400", description = RESPONSE_400_DESCRIPTION, content = @Content)
     })
     @PostMapping("/send-sms")
     public ResponseEntity<Void> sendSms(@RequestBody SmsRequestDto smsRequestDto) {
